@@ -1,0 +1,42 @@
+<div class="row mt-4">
+    <div class="col-md-4 mx-auto">
+        
+        <div class="card">
+            <div class="card-header">
+               Recuperar contraseña
+            </div>
+        </div>
+
+        <div class="card-body">
+            <form #user="ngForm" *ngIf="showCorreo" (ngSubmit)="sendEmail(user)">
+                    <div class="form-group">
+                        <input type="text" [(ngModel)]="user.correo" name="correo" placeholder="correo" autofocus class="form-control">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+
+            <div *ngIf="pregunta">
+                <div class="alert alert-primary text-center mt-5"  role="alert">
+                    Pregunta de seguridad: <strong> {{pregunta}} </strong>
+                  </div>
+                </div>
+
+                <form #question="ngForm" *ngIf="showRes" (ngSubmit)="sendQuestion(question)">
+                    <div class="form-group">
+                        <input type="text" [(ngModel)]="clientRes" name="clientRes" placeholder="Ingrese su respuesta" class="form-control">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </form>
+
+                <form #password="ngForm" *ngIf="showPass" (ngSubmit)="sendPassword(password)">
+                    <div class="form-group">
+                        <input type="text" [(ngModel)]="pass" placeholder="Ingrese su nueva clave" name="pass" class="form-control">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </form>
+        </div>
+    </div>
+</div>

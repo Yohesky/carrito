@@ -1,0 +1,38 @@
+<div class="row" >
+	
+	<div class="col-md-6 mx-auto" >
+		<div id="msg"></div>
+		<div class="card mb-3" style="max-width: 540px;" *ngFor="let product of products |	paginate: {itemsPerPage: 4, currentPage: p}">
+			<div class="row no-gutters">
+			  <div class="col-md-4">
+				<img [src]="'http://localhost:8000/' + product.foto" class="card-img img-thumbnail" alt="...">
+			  </div>
+			  <div class="col-md-8">
+				<div class="card-body">
+				  <h5 class="card-title"> {{product.titulo}} </h5>
+				  <p class="card-text"> {{product.descripcionArticulo}} </p>
+				  <p class="card-text"><small class="text-muted"> $ {{product.precio}} </small></p>
+				</div>
+			  </div>
+			</div>
+
+			<div class="row ml-auto">
+				<div class="col-md-6">
+					<button class="btn btn-outline-info" (click)="passComponent(product)">Editar</button>
+				</div>
+
+				<div class="col-md-6 pr-5" style="margin-left: -30px">
+					<button class="btn btn-outline-danger" (click)="delete(product._id)">Eliminar</button>
+				</div>
+			</div>
+		  </div>
+	
+	</div>
+
+	<div class="col-md-6">
+		<app-form-product (enviar)="recibirmsg($event)" ></app-form-product>
+	</div>
+</div>
+
+
+<pagination-controls (pageChange)="p = $event"></pagination-controls>

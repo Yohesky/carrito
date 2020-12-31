@@ -1,0 +1,48 @@
+<div class="row mt-4">
+    <div class="col-md-4 mx-auto">
+        
+        <div class="card">
+            <div class="card-header">
+                Registro
+            </div>
+        </div>
+
+        <div class="card-body mx-auto">
+            <form #user="ngForm" (ngSubmit)="register(user)">
+                    <div class="form-group">
+                        <input type="text" [(ngModel)]="user.nombre" name="nombre" placeholder="Nombre" autofocus class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" [(ngModel)]="user.apellido" name="apellido" placeholder="Apellido" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" [(ngModel)]="user.ci" name="ci" placeholder="Cedula" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" [(ngModel)]="user.correo" name="correo" placeholder="Correo" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" [(ngModel)]="user.direccion" name="direccion" placeholder="Direccion" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" [(ngModel)]="user.pregunta" name="pregunta" placeholder="Escriba su pregunta de seguridad" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" [(ngModel)]="user.respuesta" name="respuesta" placeholder="Escriba su respuesta de seguridad" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" [(ngModel)]="user.password" name="password" placeholder="Password" class="form-control">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Registrarse</button>
+            </form>
+        </div>
+    </div>
+</div>

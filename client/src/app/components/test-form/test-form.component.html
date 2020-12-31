@@ -1,0 +1,13 @@
+<form [formGroup]="testingForm" class="card">
+
+    <div class="form-group">
+        <input formControlName="nombre" type="text" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <input formControlName="apellido" type="text" class="form-control">
+    </div>
+
+    <button (click)="resetForm()">Reset</button>
+
+</form>

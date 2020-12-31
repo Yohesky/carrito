@@ -1,0 +1,67 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" routerLink="/">Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+
+        <li class="nav-item" *ngIf="!logued()" id="signInSeller" >
+            <a class="nav-link"  routerLink="loginSeller">Sign In Seller</a>
+        </li>
+
+        <li class="nav-item" *ngIf="!logued()" id="signUpSeller">
+            <a class="nav-link"  routerLink="registerSellers">Sign Up Seller</a>
+        </li>
+
+        <li class="nav-item" *ngIf="!loguedUser()" id="signInUser">
+          <a class="nav-link"  routerLink="loginUser">Sign In User</a>
+        </li>
+
+        <li class="nav-item" *ngIf="!loguedUser()" id="signUpUser">
+          <a class="nav-link"  routerLink="registerUser">Sign Up User</a>
+        </li>
+
+        <li class="nav-item"  *ngIf="logued()">
+          <a class="nav-link" routerLink="allArticles">All</a>
+        </li>
+
+        <li class="nav-item" *ngIf="logued()">
+          <a class="nav-link"   routerLink="saveArticle">Add Article</a>
+        </li>
+
+        <li class="nav-item" *ngIf="logued()">
+          <a class="nav-link"  routerLink="myPosts">My Articles</a>
+        </li>
+
+        <li class="nav-item logout" *ngIf="logued()" (click)="logOff()">
+          <a class="nav-link">Logout</a>
+        </li>
+
+        <li class="nav-item"  *ngIf="loguedUser()">
+          <a class="nav-link" routerLink="All">Articles</a>
+        </li>
+
+      
+        <li class="nav-item" *ngIf="loguedUser()">
+          <a class="nav-link"  routerLink="myCar">My Car</a>
+        </li>
+
+
+        <li class="nav-item logout" *ngIf="loguedUser()" (click)="signOff()">
+          <a class="nav-link">Sign Off</a>
+        </li>
+
+        <li class="nav-item ml-4" *ngIf="seller == true || user == true" >
+          
+          <input class="form-control mr-sm-2" id="search" type="search" placeholder="Buscar Producto"  aria-label="Search" (keyup)="filter($event)">
+         
+        </li>
+
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container mt-3">
+    <div id="products"></div>
+  </div>

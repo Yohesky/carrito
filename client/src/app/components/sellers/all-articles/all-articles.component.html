@@ -1,0 +1,61 @@
+<!--
+Inspired in this dribbble
+https://dribbble.com/shots/986548-Product-Catalog
+-->
+
+<div class="container">
+	<div class="row" *ngIf="products; else spinner">
+
+		<div class="col-xs-12 col-sm-6 col-md-3 mr-4" *ngFor="let product of products |	paginate: {itemsPerPage: 6, currentPage: p}">
+			<article class="card-wrapper">
+				<div class="image-holder">
+					<a (click)="verProduct(product._id)" class="image-holder__link"></a>
+					<img [src]="'http://localhost:8000/' + product.foto" class="image-liquid image-holder--original" alt="">
+				</div>
+
+				<div class="product-description">
+					<!-- title -->
+					<h1 class="product-description__title">
+						<a href="#">						
+							{{product.titulo}}
+							</a>
+					</h1>
+
+					<!-- category and price -->
+					<div class="row">
+						<div class="col-xs-12 col-sm-4 product-description__price">
+							$ {{product.precio}}
+						</div>
+					</div>
+
+					<!-- divider -->
+					<hr />
+
+					<!-- sizes -->
+					<div class="sizes-wrapper">
+						<b>Descripcion:</b>
+						<br />
+						<span class="secondary-text text-uppercase">
+							{{product.descripcionArticulo}}
+						</span>
+					</div>
+
+					<!-- colors -->
+					
+				</div>
+
+			</article>
+		</div>
+		
+
+	</div>
+
+	<ng-template #spinner>
+		<div class="text-center">
+			<div class="spinner-border" role="status">
+			  <span class="sr-only">Loading...</span>
+			</div>
+		  </div>
+	</ng-template>
+</div>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>

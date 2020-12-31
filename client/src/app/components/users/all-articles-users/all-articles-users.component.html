@@ -1,0 +1,84 @@
+<!--
+Inspired in this dribbble
+https://dribbble.com/shots/986548-Product-Catalog
+-->
+
+<div class="container">
+	<div class="alert alert-info alert-dismissible fade show" role="alert" *ngIf="!msg == ''">
+		{{msg}}
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		  <span aria-hidden="true">&times;</span>
+		</button>
+	  </div>
+	
+	
+	<div class="row" >
+
+		
+		<div class="col-md-8" *ngIf="products; else spinner">
+			<div class="row">
+				<div class="col-md-3 mr-4" *ngFor="let product of products | paginate: {itemsPerPage: 6, currentPage: p}" style="margin-left: 30px;">
+					<article class="card-wrapper" style="width: 220px; height: 350px;">
+						<div class="image-holder">
+							<a style="cursor: pointer;" (click)="buy(product._id)" class="image-holder__link"></a>
+							<img [src]="'http://localhost:8000/' + product.foto" class="image-liquid image-holder--original" alt="">
+						</div>
+		
+						<div class="product-description">
+							<!-- title -->
+							<h1 class="product-description__title">
+								<a href="#">						
+									{{product.titulo}}
+								</a>
+							</h1>
+		
+							<!-- category and price -->
+							<div class="row">
+								<div class="col-xs-12 col-sm-8 product-description__category secondary-text">
+									{{product.descripcionArticulo}}
+								</div>
+								<div class="col-xs-12 col-sm-4 product-description__price">
+									${{product.precio}}
+								</div>
+							</div>
+		
+							<!-- divider -->
+							<hr />
+		
+							<!-- sizes -->
+							<div class="sizes-wrapper">
+								<div class="col-xs-12 col-sm-8 product-description__category secondary-text">
+									{{product.descripcionArticulo}}
+								</div>
+
+								<div class="col-xs-12 col-sm-4 product-description__price">
+									<a routerLink="/article/{{product._id}}" class="btn btn-info">Ver</a>
+								</div>
+							</div>
+		
+							
+						</div>
+		
+					</article>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-4">
+			<app-carpreview (enviar)="recibirMsg($event)" ></app-carpreview>
+		</div>
+
+
+		<ng-template #spinner>
+			<div class="text-center mx-auto">
+				<div class="spinner-border" role="status">
+				  <span class="sr-only">Loading...</span>
+				</div>
+			  </div>
+		</ng-template>
+
+	</div>
+
+	
+</div>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>

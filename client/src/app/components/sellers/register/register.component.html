@@ -1,0 +1,50 @@
+<div class="row mt-4">
+    <div class="col-md-4 mx-auto">
+        
+        <div class="card">
+            <div class="card-header">
+                Registro
+            </div>
+        </div>
+
+        <div class="card-body mx-auto">
+            <form #seller="ngForm" (ngSubmit)="register(seller)">
+                    <div class="form-group">
+                        <input type="text" [(ngModel)]="seller.nombre" name="nombre" placeholder="nombre" autofocus class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" [(ngModel)]="seller.correo" name="correo" placeholder="Correo" autofocus class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <textarea [(ngModel)]="seller.descripcion" name="descripcion" class="form-control" placeholder="Descripcion"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" [(ngModel)]="seller.direccion" name="direccion" placeholder="Direccion" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="password" [(ngModel)]="seller.password" name="password" placeholder="password" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="file" class="btn btn-info form-control" [(ngModel)]="seller.foto" name="foto" placeholder="Seleccione" (change)="onPhotoSelected($event)" #photoInput>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" [(ngModel)]="seller.pregunta" name="pregunta" placeholder="Escriba su pregunta de seguridad" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" [(ngModel)]="seller.respuesta" name="respuesta" placeholder="Escriba su respuesta de seguridad" class="form-control">
+                    </div>
+                    
+                    <img [src]="photoSelected" class="img-fluid" (click)="photoInput.click()" alt="">
+
+                    <button type="submit" class="btn btn-primary">Registrarse</button>
+            </form>
+        </div>
+    </div>
+</div>
